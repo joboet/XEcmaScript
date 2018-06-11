@@ -138,13 +138,17 @@ try {
 }
 
 jsPlugin::~jsPlugin() {
-    {
+    try {
         JSAutoRequest request(context);
         JSAutoCompartment compartment(context, global->get());
         JS::RootedValue rval(context);
         JS::AutoValueArray<1> args(context);
         args[0].set(JS::NullValue());
-        JS_CallFunctionName(context, *global, "XPluginStop", args, &rval);
+        if(!JS_CallFunctionName(context, *global, "XPluginStop", args, &rval)) catchError(context);
+    } catch (jsPluginError error) {
+        Xlog << "Error in plugin " + name + ": " + parseError(error);
+    } catch (std::string error) {
+        Xlog << "Error in plugin " + name + ": " + error;
     }
     
     delete global;
