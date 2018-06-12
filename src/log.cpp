@@ -1,11 +1,3 @@
-//
-//  log.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 10.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "log.hpp"
 #include <XPLMUtilities.h>
 #include <ctime>

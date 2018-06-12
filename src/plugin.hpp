@@ -1,11 +1,3 @@
-//
-//  plugin.hpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 06.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #ifndef plugin_hpp
 #define plugin_hpp
 

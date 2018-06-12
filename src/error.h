@@ -1,11 +1,3 @@
-//
-//  error.h
-//  XJS
-//
-//  Created by Jonas Böttiger on 07.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #ifndef error_h
 #define error_h
 

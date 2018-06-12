@@ -1,11 +1,3 @@
-//
-//  XUtilities.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 15.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "XUtilities.hpp"
 #include "log.hpp"
 #include <XPLMUtilities.h>

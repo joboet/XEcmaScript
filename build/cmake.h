@@ -1,0 +1,2 @@
+#define XJS_VERSION_MAJOR 0
+#define XJS_VERSION_MINOR 01

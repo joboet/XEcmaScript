@@ -1,11 +1,3 @@
-//
-//  manager.hpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 11.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #ifndef manager_hpp
 #define manager_hpp
 

@@ -1,11 +1,3 @@
-//
-//  XData.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 11.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "XData.hpp"
 #include <XPLMDataAccess.h>
 #include "log.hpp"

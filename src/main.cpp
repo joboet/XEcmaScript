@@ -1,11 +1,3 @@
-//
-//  main.m
-//  XJS
-//
-//  Created by JoBo on 01.06.17.
-//  Copyright © 2017 CoffeeBlend. All rights reserved.
-//
-
 #include <XPLMPlugin.h>
 #include <XPLMProcessing.h>
 #include <string>

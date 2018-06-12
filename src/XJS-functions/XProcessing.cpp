@@ -1,11 +1,3 @@
-//
-//  XProcessing.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 13.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "XProcessing.hpp"
 #include <XPLMProcessing.h>
 #include "log.hpp"

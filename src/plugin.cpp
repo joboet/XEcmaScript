@@ -1,11 +1,3 @@
-//
-//  plugin.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 06.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "plugin.hpp"
 
 #include <fstream>

@@ -1,11 +1,3 @@
-//
-//  error.cpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 12.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #include "error.h"
 
 std::string parseError(jsPluginError error) {

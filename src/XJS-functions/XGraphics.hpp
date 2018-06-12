@@ -1,11 +1,3 @@
-//
-//  XGraphics.hpp
-//  XJS
-//
-//  Created by Jonas Böttiger on 15.04.18.
-//  Copyright © 2018 CoffeeBlend. All rights reserved.
-//
-
 #ifndef XGraphics_hpp
 #define XGraphics_hpp
 

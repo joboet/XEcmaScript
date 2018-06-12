@@ -1,0 +1,67 @@
+22 serialization::archive 16 0 0 0 0 34 /Users/Jonas/Documents/XEcmaScript 40 /Users/Jonas/Documents/XEcmaScript/build 0 0 8 0 0 0 1296 /*#include "XGraphics.hpp"
+#include <vector>
+#include <functional>
+
+class openglWrapper {
+private:
+    //static std::vector<std::function<void(...)>> panelFunctions;
+    //static std::vector<std::function<void(...)>> screenFunctions;
+    
+    static uint16_t matrixLevel;
+    
+    static void translate(double x, double y, double z) {
+        glTranslated(x, y, z);
+    }
+    
+    static void rotate(double x, double y, double z) {
+        glRotated(x, 1, 0, 0);
+        glRotated(y, 0, 1, 0);
+        glRotated(z, 0, 0, 1);
+    }
+    static void scale(double x, double y, double z) {
+        glScaled(x, y, z);
+    }
+    static void reset() {
+        glLoadIdentity();
+    }
+    
+    static void push() {
+        glPushMatrix();
+        matrixLevel++;
+    }
+    
+    static void pop() {
+        if (matrixLevel) {
+            glPopMatrix();
+            matrixLevel--;
+        }
+    }
+    
+    static void executeFunctions(std::vector<std::function<void(...)>> &functions) {
+        for (uint16_t i = 0; i < functions.size(); i++) {
+            functions[i];
+        }
+    }
+public:
+    static void panel() {
+        
+    }
+    static void screen() {
+        
+    }
+    
+    
+};
+
+uint16_t openglWrapper::matrixLevel = 0;
+
+JSClass XGraphicsClass = {
+    "XGraphics",
+    JSCLASS_HAS_PRIVATE,
+};
+*/ 1 1 62 3 18446744073709551615 4 void 63 1 63 5 18446744073709551615 10 initOpenGL 63 6 63 16 0 1 ( 63 16 63 17 0 1 ) 63 17 63 18 0 1 { 63 19 63 20 18446744073709551615 1 } 65 1 65 2 18446744073709551615 305 /*
+void initXGraphics(JSContext * context, JS::HandleObject global) {
+    JS::PersistentRootedObject * XGraphics = new JS::PersistentRootedObject(context, JS_NewObject(context, &XGraphicsClass));
+    JS_DefineProperty(context, global, "XGraphics", *XGraphics, JSPROP_PERMANENT | JSPROP_READONLY);
+    
+}*/ 66 1 71 4 18446744073709551615 0 0 1 0 0 0 8 0 0 1 2 0 10 initOpenGL 0 0 1 0 0 0 66 /Users/Jonas/Documents/XEcmaScript/src/XJS-functions/XGraphics.cpp 1528828570
