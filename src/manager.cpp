@@ -49,6 +49,7 @@ uint32_t pluginManager::operator+=(jsPlugin * plugin) {
 uint32_t pluginManager::operator+=(std::string pathToConfig) {
     jsPlugin * plugin = new jsPlugin(pathToConfig, nullptr);
     plugins.push_back(plugin);
+    names[plugin->name] = plugins.size() - 1;
     return plugins.size() - 1;
 }
 
@@ -78,7 +79,7 @@ try {
     boost::filesystem::path scriptsdir("scripts");
     Xlog << "Loading plugins from " + pluginpath.string();
     for (boost::filesystem::recursive_directory_iterator iterator(scriptsdir); iterator != boost::filesystem::recursive_directory_iterator(); iterator++) {
-        if (iterator->path().extension().string() == ".json") {
+        if (iterator->path().filename().string() == "plugin" && iterator->path().extension().string() == ".json") {
             Xlog << "Loading config " + iterator->path().string();
             operator+=(iterator->path().string());
         }
