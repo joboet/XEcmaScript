@@ -23,6 +23,8 @@ PLUGIN_API int XPluginStart ( char * outName, char * outSignature, char * outDes
     strlcpy(outSignature, "JoBo.Plugin.XJavaScript", 256);
     strlcpy(outDescription, "JavaScript engine for X-Plane", 256);
     
+    XPLMEnableFeature("XPLM_USE_NATIVE_WIDGET_WINDOWS", 1);
+    
     initPath();
     
     if (!(getPluginPath().find("Custom Scenery") == std::string::npos)) {
