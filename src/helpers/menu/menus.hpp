@@ -1,5 +1,5 @@
-#ifndef menu_hpp
-#define menu_hpp
+#ifndef menus_hpp
+#define menus_hpp
 
 #include <string>
 #include <list>
