@@ -1,8 +1,6 @@
 #ifndef widget_h
 #define widget_h
 
-namespace widget {
-  #include "widgets/window.hpp"
-}
+#include "widgets/window.hpp"
 
-#ifndef widget_h
+#endif widget_h
