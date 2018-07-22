@@ -18,11 +18,11 @@ float initScripts(float, float, int, void *) {
     return 0;
 }
 
-PLUGIN_API int XPluginStart ( char * outName, char * outSignature, char * outDescription ) {    
-    strlcpy(outName, "XJavaScript", 256);
-    strlcpy(outSignature, "JoBo.Plugin.XJavaScript", 256);
-    strlcpy(outDescription, "JavaScript engine for X-Plane", 256);
-    
+PLUGIN_API int XPluginStart ( char * outName, char * outSignature, char * outDescription ) {
+    strcpy(outName, "XEcmaScript");
+    strcpy(outSignature, "JoBo.Plugin.XEcmaScript");
+    strcpy(outDescription, "Ecmascript engine for X-Plane");
+
     XPLMEnableFeature("XPLM_USE_NATIVE_WIDGET_WINDOWS", 1);
     
     initPath();
