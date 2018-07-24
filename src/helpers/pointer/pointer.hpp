@@ -13,6 +13,7 @@ public:
   void destroy();
   safe_pointer operator=(Type * pointer);
   operator void* ();
+  operator Type* ();
   Type operator*();
   Type * operator->();
 };

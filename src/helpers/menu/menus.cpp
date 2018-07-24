@@ -1,4 +1,5 @@
 #include "menus.hpp"
+#include "../../log.hpp"
 
 menu::menu(std::string name, menutype type, menu * parent) {
   XPLMMenuID parentID;
@@ -15,7 +16,7 @@ menu::menu(std::string name, menutype type, menu * parent) {
     item = XPLMAppendMenuItem(parentID, name.c_str(), NULL, 0);
   }
 
-  XPLMCreateMenu(name.c_str(), parentID, item, &this->callback, (void*)this);
+  ID = XPLMCreateMenu(name.c_str(), parentID, item, &this->callback, (void*)this);
 }
 
 menu::~menu() {
@@ -34,7 +35,8 @@ menuitem menu::appendItem(std::string name, menuCallback callback, void * ref) {
   safe_pointer<item> menuitemref = new item();
   menuitemref->callback = callback;
   menuitemref->ref = ref;
-  int index = XPLMAppendMenuItem(ID, name.c_str(), (void*)menuitemref, 0);
+  int index = XPLMAppendMenuItem(ID, name.c_str(), menuitemref, 0);
+  if (index < 0) Xlog << "Failed to initialize menu item " + name;
   return menuitem(ID, index);
 }
 

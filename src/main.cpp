@@ -7,6 +7,8 @@
 #include "manager.hpp"
 #include "log.hpp"
 #include "XJS-functions/XGraphics.hpp"
+#include "interface/plugins.hpp"
+#include "interface/menu.hpp"
 
 pluginManager * manager;
 
@@ -15,6 +17,8 @@ jsPluginType type;
 float initScripts(float, float, int, void *) {
     Xlog << "Initialising plugin manager";
     manager = new pluginManager(type);
+    initMenus();
+    initPlugins();
     return 0;
 }
 

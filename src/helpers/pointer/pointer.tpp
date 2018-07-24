@@ -30,7 +30,14 @@ safe_pointer<Type> safe_pointer<Type>::operator=(Type * pointer) {
 
 template <class Type>
 safe_pointer<Type>::operator void* () {
-  return (void*)pointer;
+  if (!destroyed) return (void*)pointer;
+  return (void*)(new Type());
+}
+
+template <class Type>
+safe_pointer<Type>::operator Type* () {
+  if (!destroyed) return pointer;
+  return new Type();
 }
 
 template <class Type>
