@@ -112,11 +112,9 @@ try {
         JS::AutoValueArray<1> args(context);
         args[0].set(JS::UndefinedValue());
 
-        if (!JS_GetProperty(context, *global, "XPluginStop", &XJSPluginStopHandle)) {
-            throw XJS_NO_FUNCTIONS;
-        } else if (!(XJSPluginStopHandle.isObject() && JS::IsCallable(&XJSPluginStopHandle.toObject()))) {
-            throw XJS_NO_FUNCTIONS;
-        } else if (!JS_CallFunctionName(context, *global, "XPluginStart", args, &rval)) {
+        if (!JS_GetProperty(context, *global, "XPluginStop", &XJSPluginStopHandle)) throw XJS_NO_FUNCTIONS;
+        if (!(XJSPluginStopHandle.isObject() && JS::IsCallable(&XJSPluginStopHandle.toObject()))) throw XJS_NO_FUNCTIONS;
+        if (!JS_CallFunctionName(context, *global, "XPluginStart", args, &rval)) {
             catchError(context);
         }
     }
