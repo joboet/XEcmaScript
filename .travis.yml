@@ -1,0 +1,19 @@
+language: c++
+os:
+  - linux
+  - osx
+dist: trusty
+sudo: true
+
+install:
+  - install_dependencies.sh
+  - export DEPS_DIR=$(pwd)/deps
+  - export SDK_DIR=$DEPS_DIR/SDK
+cache:
+  ccache: true
+  directories:
+    - $DEPS_DIR
+
+script:
+  - cmake -DXSDK_DIR=$DEPS_DIR/SDK -G "Unix Makefiles" ./build
+  - make all -j4

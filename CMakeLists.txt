@@ -26,10 +26,9 @@ set_target_properties(plugin PROPERTIES PREFIX "")
 
 # XSDK configuration
 
-#set(XSDK_DIR CACHE PATH "Path to the X-Plane SDK")
-set(XSDK_DIR "/Users/Jonas/Documents/SDK")
-set(XSDK_LIBRARIES "${XSDK_DIR}/Libraries/")
-set(XSDK_INCLUDE "${XSDK_DIR}/CHeaders/")
+set(XSDK_DIR CACHE PATH "Path to the X-Plane SDK")
+set(XSDK_LIBRARIES "${XSDK_DIR}/Libraries")
+set(XSDK_INCLUDE "${XSDK_DIR}/CHeaders")
 add_definitions(-DXPLM200 -DXPLM210 -DXPLM300 -DXPLM301)
 
 # OS-Specifics
@@ -57,10 +56,16 @@ endif()
 
 configure_file("${PROJECT_SOURCE_DIR}/cmake.h.in" "${PROJECT_BINARY_DIR}/cmake.h")
 
+# Headers
+include_directories(${Boost_INCLUDE})
+include_directories(${XSDK_INCLUDE})
+include_directories(${MOZJS_INCLUDE})
+include_directories(${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR})
+
 # Modules
 
 pkg_check_modules(MOZJS REQUIRED mozjs-52)
-
 target_link_libraries(plugin ${MOZJS_LIBRARIES})
 
 target_link_libraries(plugin ${XSDK_LIBRARIES})
@@ -69,10 +74,3 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED OFF)
 find_package(Boost REQUIRED COMPONENTS filesystem)
 target_link_libraries(plugin ${Boost_LIBRARIES})
-
-# Headers
-include_directories(${Boost_INCLUDE})
-include_directories(${XSDK_INCLUDE})
-include_directories(${MOZJS_INCLUDE})
-include_directories(${PROJECT_BINARY_DIR})
-include_directories(${PROJECT_SOURCE_DIR})
