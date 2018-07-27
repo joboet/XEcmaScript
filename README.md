@@ -1,6 +1,8 @@
 # XEcmaScript
 An EcmaScript (JavaScript) scripting environment for the X-Plane flight simulator
 
+[![Build Status](https://travis-ci.org/CoffeeBlend/XEcmaScript.svg?branch=master)](https://travis-ci.org/CoffeeBlend/XEcmaScript)
+
 ## Requirements
 - CMake
 - Mozilla Spidermoney version 52
