@@ -3,7 +3,8 @@
 if [ $TRAVIS_OS_NAME == linux ]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >> ~/.profile
+  sudo apt-get install build-essential
+  echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
   export LOADERPATH="\$ORIGIN"
 fi
 
@@ -28,8 +29,8 @@ autoconf213
 mkdir buildRLS
 cd buildRLS
 ../configure --prefix=/usr/local --disable-tests
-make -j4
-make install
+make -j4 -s
+make install -s
 cd ../../../../
 sudo rm -R gecko-dev
 install_name_tool -id $LOADERPATH/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
