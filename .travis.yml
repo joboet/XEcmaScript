@@ -6,7 +6,7 @@ dist: trusty
 sudo: true
 
 install:
-  - ./install_dependencies.sh
+  - bash ./install_dependencies.sh
   - export DEPS_DIR=$(pwd)/deps
   - export SDK_DIR=$DEPS_DIR/SDK
 cache:
