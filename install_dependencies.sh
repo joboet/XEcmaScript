@@ -4,7 +4,7 @@ if [ $TRAVIS_OS_NAME == linux ]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
   sudo apt-get install build-essential
-  echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export LOADERPATH="\$ORIGIN"
 fi
 
