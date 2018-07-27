@@ -6,11 +6,14 @@ then
   sudo apt-get install build-essential
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export LOADERPATH="\$ORIGIN"
+  brew install patchelf
+  export CHANGEID=patchelf --set-soname
 fi
 
 if [ $TRAVIS_OS_NAME == osx ]
 then
   export LOADERPATH="@loader_path"
+  export CHANGEID=install_name_tool -id
 fi
 
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
@@ -33,6 +36,6 @@ make -j4 -s
 make install -s
 cd ../../../../
 sudo rm -R gecko-dev
-install_name_tool -id $LOADERPATH/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
+$CHANGEID $LOADERPATH/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
 
 fi
