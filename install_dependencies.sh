@@ -3,16 +3,17 @@
 if [ $TRAVIS_OS_NAME == linux ]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  sudo apt-get install build-essential
+  sudo apt-get install build-essential yasm
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   brew install patchelf gcc@8
   export CC=gcc-8
   export CXX=g++-8
 fi
 
-brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
+brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
+  brew install yasm
   brew upgrade cmake
 fi
 

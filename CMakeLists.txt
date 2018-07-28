@@ -60,6 +60,7 @@ configure_file("${PROJECT_SOURCE_DIR}/cmake.h.in" "${PROJECT_BINARY_DIR}/cmake.h
 
 pkg_check_modules(MOZJS REQUIRED mozjs-52)
 target_link_libraries(plugin ${MOZJS_LIBRARIES})
+message(STATUS ${MOZJS_INCLUDE_DIRS})
 
 target_link_libraries(plugin ${XSDK_LIBRARIES})
 
@@ -72,6 +73,6 @@ target_link_libraries(plugin ${Boost_LIBRARIES})
 add_custom_command(OUTPUT MOZJS_INCLUDE COMMAND js52-config --includedir WORKING_DIRECTORY ${CMAKE_BUILD_DIR})
 include_directories(${Boost_INCLUDE})
 include_directories(${XSDK_INCLUDE})
-include_directories("${MOZJS_INCLUDE}/mozjs-52")
+include_directories(${MOZJS_INCLUDE_DIRS})
 include_directories(${PROJECT_BINARY_DIR})
 include_directories(${PROJECT_SOURCE_DIR})
