@@ -10,7 +10,7 @@ then
   export CXX=g++-8
 fi
 
-brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
+brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
   brew upgrade cmake
@@ -25,7 +25,7 @@ cd deps
 if [ $TRAVIS_OS_NAME == linux ]
 then
   curl https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.sh > cmake_linux.sh
-  sh ./cmake_linux.sh --prefix=/usr/local/bin --skip-license
+  sudo sh ./cmake_linux.sh --prefix=/usr/local/bin --skip-license
   cmake --version
 fi
 
