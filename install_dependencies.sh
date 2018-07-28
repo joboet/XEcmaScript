@@ -11,6 +11,7 @@ fi
 brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
+  brew install yasm
   brew upgrade cmake
 fi
 
