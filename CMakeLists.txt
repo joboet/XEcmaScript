@@ -69,6 +69,7 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 target_link_libraries(plugin ${Boost_LIBRARIES})
 
 # Headers
+include_directories("/usr/local/include")
 include_directories(${Boost_INCLUDE})
 include_directories(${XSDK_INCLUDE})
 include_directories(${MOZJS_INCLUDE})
