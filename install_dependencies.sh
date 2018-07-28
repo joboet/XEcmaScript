@@ -18,10 +18,12 @@ then
   brew upgrade cmake
 fi
 
-if [ $(js52-config) == "" ]
+cd deps
+
+if [ $(command -v js52-config) == "" ]
 then
 
-cd deps
+export DEPS_DIR=$(pwd)
 
 if [ $TRAVIS_OS_NAME == linux ]
 then
@@ -38,7 +40,7 @@ cd gecko-dev/js/src/
 autoconf213
 mkdir buildRLS
 cd buildRLS
-../configure --prefix=/usr/local --disable-tests
+../configure --prefix=$DEPS_DIR --disable-tests
 make -j4 -s
 make install
 cd ../../../..
@@ -54,3 +56,8 @@ then
 fi
 
 fi
+
+ln -s lib/pkgconfig/mozjs-52.pc /usr/local/lib/pkgconfig
+ln -s lib/* /usr/local/lib
+ln -s include/* /usr/local/include
+ln -s bin/* /usr/local/bin
