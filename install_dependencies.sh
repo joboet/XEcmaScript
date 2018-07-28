@@ -50,7 +50,7 @@ sudo rm -R gecko-dev
 
 if [ $TRAVIS_OS_NAME == osx ]
 then
-  install_name_tool -id @loader_path/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
+  install_name_tool -id @loader_path/lib/libmozjs.dylib $DEPS_DIR/lib/libmozjs-52.dylib
 fi
 if [ $TRAVIS_OS_NAME == linux ]
 then
@@ -59,7 +59,7 @@ fi
 
 fi
 
-ln -s lib/pkgconfig/mozjs-52.pc /usr/local/lib/pkgconfig
+ln -s lib/pkgconfig/mozjs-52.pc /usr/local/lib/pkgconfig/mozjs-52.pc
 ln -s lib/* /usr/local/lib
 ln -s include/* /usr/local/include
 ln -s bin/* /usr/local/bin
