@@ -59,7 +59,4 @@ fi
 
 fi
 
-ln -s lib/pkgconfig/mozjs-52.pc /usr/local/lib/pkgconfig/mozjs-52.pc
-ln -s lib/* /usr/local/lib
-ln -s include/* /usr/local/include
-ln -s bin/* /usr/local/bin
+cp $DEPS_DIR/lib/pkgconfig/mozjs-52.pc /usr/local/lib/pkgconfig/mozjs-52.pc
