@@ -56,13 +56,6 @@ endif()
 
 configure_file("${PROJECT_SOURCE_DIR}/cmake.h.in" "${PROJECT_BINARY_DIR}/cmake.h")
 
-# Headers
-include_directories(${Boost_INCLUDE})
-include_directories(${XSDK_INCLUDE})
-include_directories(${MOZJS_INCLUDE})
-include_directories(${PROJECT_BINARY_DIR})
-include_directories(${PROJECT_SOURCE_DIR})
-
 # Modules
 
 pkg_check_modules(MOZJS REQUIRED mozjs-52)
@@ -74,3 +67,10 @@ set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED OFF)
 find_package(Boost REQUIRED COMPONENTS filesystem)
 target_link_libraries(plugin ${Boost_LIBRARIES})
+
+# Headers
+include_directories(${Boost_INCLUDE})
+include_directories(${XSDK_INCLUDE})
+include_directories(${MOZJS_INCLUDE})
+include_directories(${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR})

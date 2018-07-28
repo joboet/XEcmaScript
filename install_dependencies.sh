@@ -13,7 +13,7 @@ fi
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == linux ]
 then
-  brew install --force cmake
+  brew install cmake
   brew link --overwrite cmake
 fi
 if [ $TRAVIS_OS_NAME == osx ]
