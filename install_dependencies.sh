@@ -7,13 +7,13 @@ then
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   export LOADERPATH="\$ORIGIN"
   brew install patchelf
-  export CHANGEID=patchelf --set-soname
+  export CHANGEID=patchelf --set-soname \$ORIGIN/lib/libmozjs.so /usr/local/lib/libmozjs-52.so
 fi
 
 if [ $TRAVIS_OS_NAME == osx ]
 then
   export LOADERPATH="@loader_path"
-  export CHANGEID=install_name_tool -id
+  export CHANGEID=install_name_tool -id @loader_path/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
 fi
 
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
@@ -33,9 +33,9 @@ mkdir buildRLS
 cd buildRLS
 ../configure --prefix=/usr/local --disable-tests
 make -j4 -s
-make install -s
+make install
 cd ../../../../
 sudo rm -R gecko-dev
-$CHANGEID $LOADERPATH/lib/libmozjs.dylib /usr/local/lib/libmozjs-52.dylib
+bash -c $CHANGEID
 
 fi
