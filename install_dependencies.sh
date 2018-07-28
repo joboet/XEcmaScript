@@ -9,6 +9,8 @@ then
 fi
 
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
+brew install --force cmake
+brew link --overwrite cmake
 
 if [ ! -d deps ]
 then
@@ -40,6 +42,6 @@ then
 fi
 if [ $TRAVIS_OS_NAME == linux ]
 then
-  pathelf --set-soname \$ORIGIN/lib/libmozjs.so /usr/local/lib/libmozjs-52.so
+  patchelf --set-soname \$ORIGIN/lib/libmozjs.so /usr/local/lib/libmozjs-52.so
 fi
 fi
