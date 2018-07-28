@@ -16,5 +16,5 @@ cache:
 
 script:
   - mkdir build
-  - cmake -DXSDK_DIR=$DEPS_DIR/SDK -G "Unix Makefiles" -B ./build -H ./
+  - cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ./
   - make all -j4

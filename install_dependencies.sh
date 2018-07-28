@@ -5,7 +5,7 @@ then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
   sudo apt-get install build-essential
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  brew install patchelf gcc
+  brew install patchelf gcc@8
 fi
 
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
