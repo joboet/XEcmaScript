@@ -3,17 +3,14 @@
 if [ $TRAVIS_OS_NAME == linux ]
 then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  sudo apt-get install build-essential yasm
+  sudo apt-get install build-essential
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  brew install patchelf gcc@8
-  export CC=gcc-8
-  export CXX=g++-8
+  brew install patchelf
 fi
 
 brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
-  brew install yasm
   brew upgrade cmake
 fi
 
@@ -31,7 +28,7 @@ then
 fi
 
 curl http://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK301.zip > SDK.zip
-unzip -qq SDK.zip
+unzip -q SDK.zip
 rm SDK.zip
 git clone -b esr52 --depth 1 https://github.com/mozilla/gecko-dev.git
 cd gecko-dev/js/src/

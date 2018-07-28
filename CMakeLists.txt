@@ -29,6 +29,7 @@ set_target_properties(plugin PROPERTIES PREFIX "")
 set(XSDK_DIR CACHE PATH "Path to the X-Plane SDK")
 set(XSDK_LIBRARIES "${XSDK_DIR}/Libraries")
 set(XSDK_INCLUDE "${XSDK_DIR}/CHeaders")
+message(STATUS ${XSDK_INCLUDE})
 add_definitions(-DXPLM200 -DXPLM210 -DXPLM300 -DXPLM301)
 
 # OS-Specifics

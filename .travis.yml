@@ -7,14 +7,14 @@ sudo: true
 
 install:
   - bash ./install_dependencies.sh
-  - export DEPS_DIR=$(pwd)/deps
-  - export SDK_DIR=$DEPS_DIR/SDK
 cache:
   ccache: true
   directories:
     - $DEPS_DIR
 
 script:
+  - export DEPS_DIR=$(pwd)/deps
+  - export SDK_DIR=$DEPS_DIR/SDK
   - mkdir build
   - cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ./
   - make all -j4
