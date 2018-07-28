@@ -10,7 +10,7 @@ then
   export CXX=g++-8
 fi
 
-brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
+brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
   brew upgrade cmake
@@ -40,9 +40,7 @@ cd buildRLS
 ../configure --prefix=/usr/local --disable-tests
 make -j4 -s
 make install
-cd ..
-cp ./jsapi.h /usr/local/include/jsapi.h
-cd ../../..
+cd ../../../..
 sudo rm -R gecko-dev
 
 if [ $TRAVIS_OS_NAME == osx ]
