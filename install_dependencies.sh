@@ -35,7 +35,7 @@ then
 fi
 
 curl http://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK301.zip > SDK.zip
-unzip -q SDK.zip
+unzip -q -u SDK.zip
 rm SDK.zip
 git clone -b esr52 --depth 1 https://github.com/mozilla/gecko-dev.git
 cd gecko-dev/js/src/
