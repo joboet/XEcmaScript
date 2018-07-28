@@ -15,8 +15,7 @@ cache:
 script:
   - export DEPS_DIR=$(pwd)/deps
   - export SDK_DIR=$DEPS_DIR/SDK
-  - export CC=gcc-4.9
-  - export CXX=g++-4.9
+  - if [ $TRAVIS_OS_NAME == linux ] then export CC=gcc-4.9 && export CXX=g++-4.9; fi
   - mkdir build
   - cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ./
   - make all -j4
