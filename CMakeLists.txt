@@ -69,7 +69,7 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 target_link_libraries(plugin ${Boost_LIBRARIES})
 
 # Headers
-include_directories("/usr/local/include")
+add_custom_command(OUTPUT MOZJS_INCLUDE COMMAND js52-config --includedir WORKING_DIRECTORY ${CMAKE_BUILD_DIR})
 include_directories(${Boost_INCLUDE})
 include_directories(${XSDK_INCLUDE})
 include_directories(${MOZJS_INCLUDE})

@@ -25,7 +25,7 @@ cd deps
 if [ $TRAVIS_OS_NAME == linux ]
 then
   curl https://cmake.org/files/v3.12/cmake-3.12.0-Linux-x86_64.sh > cmake_linux.sh
-  sh ./cmake_linux.sh --prefix=/usr/local/bin --skip-licence
+  sh ./cmake_linux.sh --prefix=/usr/local/bin --skip-license
   cmake --version
 fi
 
@@ -40,7 +40,9 @@ cd buildRLS
 ../configure --prefix=/usr/local --disable-tests
 make -j4 -s
 make install
-cd ../../../../
+cd ..
+cp ./jsapi.h /usr/local/include/jsapi.h
+cd ../../..
 sudo rm -R gecko-dev
 
 if [ $TRAVIS_OS_NAME == osx ]
