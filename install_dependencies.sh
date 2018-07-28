@@ -6,11 +6,20 @@ then
   sudo apt-get install build-essential
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   brew install patchelf gcc@8
+  export CC=gcc-8
+  export CXX=g++-8
 fi
 
 brew install pkg-config perl binutils ccache boost yasm gawk python autoconf@2.13
-brew install --force cmake
-brew link --overwrite cmake
+if [ $TRAVIS_OS_NAME == linux ]
+then
+  brew install --force cmake
+  brew link --overwrite cmake
+fi
+if [ $TRAVIS_OS_NAME == osx ]
+then
+  brew upgrade cmake
+fi
 
 if [ ! -d deps ]
 then
@@ -25,11 +34,6 @@ cd gecko-dev/js/src/
 autoconf213
 mkdir buildRLS
 cd buildRLS
-if [ $TRAVIS_OS_NAME == linux ]
-then
-  export CC=gcc-8
-  export CXX=g++-8
-fi
 ../configure --prefix=/usr/local --disable-tests
 make -j4 -s
 make install
