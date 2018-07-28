@@ -35,7 +35,7 @@ jsPlugin::jsPlugin(std::string pathToConfig, jsPluginError * errorOut) {
     } else {
         *errorOut = XJS_NO_ERROR;
     }
-    
+
 try {
     json pluginConfig;
     {
@@ -44,17 +44,17 @@ try {
         configStream << configFile.rdbuf();
         pluginConfig = json::parse(configStream.str().c_str());
     }
-    
-    
+
+
     name = pluginConfig["name"];
     if (pluginConfig["type"].get<std::string>() == "global") {type = JS_GLOBAL;}
     else if (pluginConfig["type"].get<std::string>() == "aircraft") {type = JS_AIRCRAFT;}
     else if (pluginConfig["type"].get<std::string>() == "scenery") {type = JS_SCENERY;}
     else {throw XJS_CONFIG_ERROR;}
     path = pathToConfig.substr(0, pathToConfig.find_last_of('/'));
-    
+
     Xlog << std::string("Loading plugin ") + name;
-    
+
     // Init JavaScript context
     context = JS_NewContext(32 * 1024 * 1024);
     if (!context) {
@@ -65,13 +65,13 @@ try {
         *errorOut = XJS_CONTEXT_INIT_ERROR;
         return;
     }
-    
+
     JSAutoRequest request(context);
-    
+
     JS::CompartmentOptions options;
     global = new JS::PersistentRootedObject(context);
     *global = JS_NewGlobalObject(context, &globalclass, NULL, JS::FireOnNewGlobalHook, options);
-    
+
     if (!global) {
         *errorOut = XJS_GLOBAL_INIT_ERROR;
         return;
@@ -79,20 +79,20 @@ try {
         *errorOut = XJS_GLOBAL_INIT_ERROR;
         return;
     }
-    
+
     JSAutoCompartment compartment(context, *global);
     JS_InitStandardClasses(context, *global);
     catchError(context);
     initXJSClasses(context, *global);
     catchError(context);
-    
+
     // Compile and execute script files
     for (auto iterator = pluginConfig["files"].begin(); iterator != pluginConfig["files"].end(); iterator++) {
         std::string scriptname = *iterator;
-        
+
         JS::CompileOptions compileoptions(context);
-        JS::Rooted<JSScript*> script = JS::RootedScript(context);
-        
+        JS::RootedScript script(context);
+
         JS::RootedValue returnvalue(context);
         FILE * srcfile = fopen((path + boostseparator + scriptname).c_str(), "r");
         if (!JS::Compile(context, compileoptions, srcfile, &script)) {
@@ -103,12 +103,12 @@ try {
         }
         fclose(srcfile);
     }
-    
+
     // Check for callback functions and call XPluginStart()
     {
         JS::RootedValue XJSPluginStopHandle(context);
         JS::RootedValue rval(context);
-        
+
         JS::AutoValueArray<1> args(context);
         args[0].set(JS::UndefinedValue());
 
@@ -140,15 +140,15 @@ jsPlugin::~jsPlugin() {
     } catch (std::string error) {
         Xlog << "Error in plugin " + name + ": " + error;
     }
-    
+
     delete global;
     JS_DestroyContext(context);
 }
 
 void jsPlugin::jsPluginEnable() {
-    
+
 }
 
 void jsPlugin::jsPluginDisable() {
-    
+
 }
