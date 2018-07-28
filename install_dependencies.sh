@@ -20,7 +20,9 @@ fi
 
 cd deps
 
-if [ $(command -v js52-config) == "" ]
+$MOZJS_EXISTS=$(command -v js52-config)
+
+if [ $MOZJS_EXISTS == "" ]
 then
 
 export DEPS_DIR=$(pwd)
