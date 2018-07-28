@@ -18,10 +18,9 @@ then
   brew upgrade cmake
 fi
 
-if [ ! -d deps ]
+if [ $(js52-config) == "" ]
 then
 
-mkdir deps
 cd deps
 
 if [ $TRAVIS_OS_NAME == linux ]
