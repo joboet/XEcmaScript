@@ -6,6 +6,9 @@ then
   sudo apt-get install build-essential
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
   brew install patchelf
+  brew install gcc@4.9 --build-from-source
+  export CC=gcc-4.9
+  export CXX=g++-4.9
 fi
 
 brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
