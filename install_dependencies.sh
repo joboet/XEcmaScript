@@ -20,12 +20,10 @@ fi
 
 cd deps
 
-$MOZJS_EXISTS=$(pkg-config --libs mozjs-52)
-
-if [ -z "$MOZJS_EXISTS" ]
-then
-
 export DEPS_DIR=$(pwd)
+
+if [ ! -f $DEPS_DIR/lib/pkgconfig/mozjs-52.pc ]
+then
 
 if [ $TRAVIS_OS_NAME == linux ]
 then

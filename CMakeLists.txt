@@ -60,8 +60,7 @@ configure_file("${PROJECT_SOURCE_DIR}/cmake.h.in" "${PROJECT_BINARY_DIR}/cmake.h
 # Modules
 
 pkg_check_modules(MOZJS REQUIRED mozjs-52)
-link_directories(${MOZJS_LIBRARY_DIRS})
-target_link_libraries(plugin ${MOZJS_LIBRARIES})
+target_link_libraries(plugin ${MOZJS_LINK_LIBRARIES})
 message(STATUS ${MOZJS_INCLUDE_DIRS})
 
 target_link_libraries(plugin ${XSDK_LIBRARIES})
