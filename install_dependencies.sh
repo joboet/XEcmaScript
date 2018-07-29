@@ -20,7 +20,7 @@ fi
 
 cd deps
 
-$MOZJS_EXISTS=$(command -v js52-config)
+$MOZJS_EXISTS=$(pkg-config --libs mozjs-52)
 
 if [ -z "$MOZJS_EXISTS" ]
 then
