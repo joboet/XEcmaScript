@@ -71,7 +71,6 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 target_link_libraries(plugin ${Boost_LIBRARIES})
 
 # Headers
-add_custom_command(OUTPUT MOZJS_INCLUDE COMMAND js52-config --includedir WORKING_DIRECTORY ${CMAKE_BUILD_DIR})
 include_directories(${Boost_INCLUDE})
 include_directories(${XSDK_INCLUDE})
 include_directories("${XSDK_INCLUDE}/XPLM")
