@@ -32,7 +32,7 @@ menuitem menu::appendLabel(std::string name) {
 }
 
 menuitem menu::appendItem(std::string name, menuCallback callback, void * ref) {
-  safe_pointer<item> menuitemref = new item();
+  item * menuitemref = new item();
   menuitemref->callback = callback;
   menuitemref->ref = ref;
   int index = XPLMAppendMenuItem(ID, name.c_str(), menuitemref, 0);
