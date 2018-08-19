@@ -11,10 +11,11 @@ then
   export CXX=g++-4.9
 fi
 
-brew install pkg-config perl binutils ccache boost gawk python autoconf@2.13
+brew install pkg-config perl binutils boost gawk python autoconf@2.13
 if [ $TRAVIS_OS_NAME == osx ]
 then
-  brew install yasm
+  brew install yasm ccache
+  export PATH="/usr/local/opt/ccache/libexec:$PATH"
   brew upgrade cmake
 fi
 
