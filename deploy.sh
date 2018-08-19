@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export $BUILDDIR=$(pwd)/build
+export BUILDDIR=$(pwd)/build
 
 if [ $TRAVIS_OS_NAME == mac ]
 then
