@@ -1,19 +1,28 @@
 language: c++
 os:
-  - osx
+- osx
 dist: trusty
 sudo: true
-
 install:
-  - bash ./install_dependencies.sh
+- bash ./install_dependencies.sh
 cache:
   ccache: true
   directories:
-    - ./deps
-
+  - "./deps"
 script:
-  - export DEPS_DIR=$(pwd)/deps
-  - export SDK_DIR=$DEPS_DIR/SDK
-  - if [ $TRAVIS_OS_NAME == linux ]; then export CC=gcc-4.9 && export CXX=g++-4.9; fi
-  - cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ./
-  - make all -j4
+- export DEPS_DIR=$(pwd)/deps
+- export SDK_DIR=$DEPS_DIR/SDK
+- if [ $TRAVIS_OS_NAME == linux ]; then export CC=gcc-4.9 && export CXX=g++-4.9; fi
+- mkdir build && cd build
+- cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ../
+- make all -j4
+before_deploy:
+- bash ./deploy.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: Ob4VyZVH0rFwRw1GOC5LKlScc3tJH/C0uYH4Zn85Pjw1Ff0OmMiF+yOwQgid+RUPbIid3vDangeCQdMAxDR140bsO1pUZBW3NMt9WlnL43lP1/9gXNcjcq1P2AqJNyRxFzjsBNqjzemGzJZ1keGb8cV2jtmD1Opuw4mTfPsuzj6/mSwkyC2yZQcGpX1ng7YysvRtKa2YnDG3Ly61PWzIjgx6qh/56kIZsIvD2A0xl7kw/gLLy5gziNPyVtb7Yu/j3vlHbojk6QszMMZfBcCgizELACyrqRVPfnDWWca6HNLuhE9jw6515xvkkPG4Tx+Sdf50RZnT0qBTLeQ+7dAZAh/NZUCeUS4zoPUeR8FBE49SvFuvtHW9Dl1oHTp0NNlcujLlVW0Wfqf8QxLJ76scMiZ/a1UZ8BBolNCy+2x2IFGXJuNhPWgIw25bfG7VG+osB0YAQBu6/YNbQhUPfUC68BEC0e+vbmnmBzqOel90ZUEAwZdN4LLrWVLFIBS6Cl297h5kMDOW1knVSNwa60Jj8EgHZAxS43yl97N/p3H8ZWxwTZw6p2VhDUUqUzI47mfBWW+R/XnufZisdptPK/H1BW/gOA/B+txRssHFVEjfyqs34hjWl8yIEQjHBkuk5gZ4lJ3rmjDlKIA1qjSN2Iut4hWlGcDWHpqR5ZPSXJLJt/A=
+  file_glob: true
+  file: deploy/*.zip
+  on:
+    repo: CoffeeBlend/XEcmaScript
