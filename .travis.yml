@@ -23,6 +23,7 @@ deploy:
   provider: releases
   api_key:
     secure: Ob4VyZVH0rFwRw1GOC5LKlScc3tJH/C0uYH4Zn85Pjw1Ff0OmMiF+yOwQgid+RUPbIid3vDangeCQdMAxDR140bsO1pUZBW3NMt9WlnL43lP1/9gXNcjcq1P2AqJNyRxFzjsBNqjzemGzJZ1keGb8cV2jtmD1Opuw4mTfPsuzj6/mSwkyC2yZQcGpX1ng7YysvRtKa2YnDG3Ly61PWzIjgx6qh/56kIZsIvD2A0xl7kw/gLLy5gziNPyVtb7Yu/j3vlHbojk6QszMMZfBcCgizELACyrqRVPfnDWWca6HNLuhE9jw6515xvkkPG4Tx+Sdf50RZnT0qBTLeQ+7dAZAh/NZUCeUS4zoPUeR8FBE49SvFuvtHW9Dl1oHTp0NNlcujLlVW0Wfqf8QxLJ76scMiZ/a1UZ8BBolNCy+2x2IFGXJuNhPWgIw25bfG7VG+osB0YAQBu6/YNbQhUPfUC68BEC0e+vbmnmBzqOel90ZUEAwZdN4LLrWVLFIBS6Cl297h5kMDOW1knVSNwa60Jj8EgHZAxS43yl97N/p3H8ZWxwTZw6p2VhDUUqUzI47mfBWW+R/XnufZisdptPK/H1BW/gOA/B+txRssHFVEjfyqs34hjWl8yIEQjHBkuk5gZ4lJ3rmjDlKIA1qjSN2Iut4hWlGcDWHpqR5ZPSXJLJt/A=
+  skip_cleanup: true
   file_glob: true
   file: $TRAVIS_BUILD_DIR/deploy/*.zip
   on:
