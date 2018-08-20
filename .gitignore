@@ -31,6 +31,9 @@
 *.out
 *.app
 
+# Deploy folder
+/deploy/*
+
 # CMake files
 /build/*
 /CMakeFiles/*
