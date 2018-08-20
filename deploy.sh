@@ -2,7 +2,7 @@
 
 export BUILDDIR=$(pwd)/build
 
-if [ $TRAVIS_OS_NAME == mac ]
+if [ $TRAVIS_OS_NAME == osx ]
 then
   export PLUGIN_NAME=mac.xpl
   export EXTENSION=.dylib
