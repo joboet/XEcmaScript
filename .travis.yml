@@ -17,7 +17,7 @@ script:
 - cmake -DXSDK_DIR=$SDK_DIR -G "Unix Makefiles" ../
 - make all -j4
 before_deploy:
-- cd $TRAVIS_BUILD_DIR
+- cd $DEPS_DIR
 - bash ./deploy.sh
 deploy:
   provider: releases
