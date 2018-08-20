@@ -27,3 +27,7 @@ deploy:
   file: deploy/*.zip
   on:
     repo: CoffeeBlend/XEcmaScript
+    tags: false
+  name: "Nightly Build"
+  body: "This is a build by Travis of the current commit. Do not use for production!"
+  prerelease: true
