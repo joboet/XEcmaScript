@@ -17,7 +17,7 @@ void pluginManager::reloadPlugins() {
 }
 
 void pluginManager::reloadPlugin(uint32_t id) {
-    
+
 }
 
 void pluginManager::enablePlugins() {
@@ -69,10 +69,6 @@ void pluginManager::loadPlugins() {
 try {
     boost::filesystem::path oldPath = boost::filesystem::current_path();
     std::string nativescriptspath = getPluginPath();
-#ifdef APL
-    std::replace(nativescriptspath.begin(), nativescriptspath.end(), ':', '/');
-    nativescriptspath = nativescriptspath.substr(nativescriptspath.find_first_of("/"), nativescriptspath.length());
-#endif
     boost::filesystem::path pluginpath(nativescriptspath.c_str());
     if (pluginpath.has_filename()) pluginpath.remove_filename();
     boost::filesystem::current_path(pluginpath);
