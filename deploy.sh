@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export DEPS_DIR=$(pwd)/deps
 export BUILDDIR=$(pwd)/build
 
 if [ $TRAVIS_OS_NAME == osx ]
@@ -13,15 +14,16 @@ then
   export EXTENSION=.so
 fi
 
-export MOZJS_LIB_NAME=$(pkg-config --libs-only-l mozjs-52)
-export MOZJS_LIB_PATH=$(pkg-config --libs-only-L mozjs-52)
-export MOZJS_LIBRARY=${MOZJS_LIB_PATH#"-L"}/lib${MOZJS_LIB_NAME#"-l"}$EXTENSION
+export MOZJS_LIBRARY=$DEPS_DIR/lib/libmozjs-52$EXTENSION
+export MOZGLUE_LIBRARY=$DEPS_DIR/lib/libmozglue$EXTENSION
 echo $MOZJS_LIBRARY
+echo $MOZGLUE_LIBRARY
 
 mkdir deploy && cd deploy
 mkdir $TRAVIS_OS_NAME && cd $TRAVIS_OS_NAME
 mkdir lib
 cp $MOZJS_LIBRARY lib/libmozjs$EXTENSION
+cp $MOZGLUE_LIBRARY lib/libmozglue$EXTENSION
 cp $BUILDDIR/$PLUGIN_NAME ./$PLUGIN_NAME
 
 cd ..

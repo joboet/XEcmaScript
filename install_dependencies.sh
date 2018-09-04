@@ -44,12 +44,15 @@ cd buildRLS
 ../configure --prefix=$DEPS_DIR --disable-tests
 make -j4 -s
 make install
+cp mozglue/build/libmozglue.dylib $DEPS_DIR/lib/libmozglue.dylib
 cd ../../../..
 sudo rm -R gecko-dev
 
 if [ $TRAVIS_OS_NAME == osx ]
 then
+  install_name_tool -id @loader_path/libmozglue.dylib $DEPS_DIR/lib/libmozglue.dylib
   install_name_tool -id @loader_path/lib/libmozjs.dylib $DEPS_DIR/lib/libmozjs-52.dylib
+  install_name_tool -change @executable_path/libmozglue.dylib @loader_path/libmozglue.dylib $DEPS_DIR/lib/libmozglue.dylib
 fi
 if [ $TRAVIS_OS_NAME == linux ]
 then
