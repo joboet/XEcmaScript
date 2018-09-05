@@ -4,14 +4,14 @@ An EcmaScript (JavaScript) scripting environment for the X-Plane flight simulato
 [![Build Status](https://travis-ci.org/CoffeeBlend/XEcmaScript.svg?branch=master)](https://travis-ci.org/CoffeeBlend/XEcmaScript)
 
 ## Requirements
-- CMake
-- Mozilla Spidermoney version 52
+- CMake (version 3.12.1 or higher)
+- Mozilla Spidermoney (version 52)
 - Boost
 - pkg-config
 - X-Plane SDK
 
 ## How to build
-First, install Spidermonkey using the instructions provided on (https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Build_Documentation). This may require some experimenting to get a successfull build. The debug build is not needed. 
+First, install Spidermonkey using the instructions provided on (https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Build_Documentation). This may require some experimenting to get a successfull build. The debug build is not needed.
 
 Then, install the other dependencies. I recommend using a package manager such as Homebrew on MacOS, or you can build them from source if you wish to do so. The X-Plane SDK can be downloaded from (https://developer.x-plane.com/sdk/).
 
